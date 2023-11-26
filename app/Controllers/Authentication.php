@@ -25,6 +25,15 @@ class Authentication extends BaseController
         }
         return view('authentication');
     }
+    
+    public function register()
+    {
+        if ($this->session->has('user')) {
+            
+            return redirect()->to('dashboard');
+        }
+        return view('register');
+    }
 
     public function register_user()
     {

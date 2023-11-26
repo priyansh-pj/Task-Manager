@@ -1,12 +1,39 @@
-            <!-- Your existing content here -->
+</div> 
 
-            </main>
-    </div>
 
-    <!-- Bootstrap JS and other scripts if needed -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-rwlA4iYpBMnGrURvPF3P7ER5R6IsrrNym6RJHl5pEoXlVOd2cRPvCX77j2M5p4a3"
-        crossorigin="anonymous"></script>
-</body>
+            </div>
 
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+
+        </div>
+        <!-- END wrapper -->
+
+
+
+        <!-- Vendor js -->
+        <script src=<?= base_url("public/assets/js/vendor.min.js") ?>></script>
+
+        <!-- Bootstrap Datepicker js -->
+        <script src=<?= base_url("public/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js") ?>></script>
+
+        <!-- Chart js -->
+        <script src=<?= base_url("public/assets/vendor/chart.js/chart.min.js") ?>></script>
+
+        <!-- Projects Analytics Dashboard App js -->
+        <script src=<?= base_url("public/assets/js/pages/demo.dashboard-projects.js") ?>></script>
+
+        <!-- App js -->
+        <script src=<?= base_url("public/assets/js/app.min.js") ?>></script>
+
+        <!-- DataTable -->
+
+        <script src=<?= base_url("public/assets/vendor/datatables.net/js/jquery.dataTables.min.js") ?>></script>
+        <script src=<?= base_url("public/assets/vendor/datatables.net-bs5/js/dataTables.bootstrap5.min.js") ?>></script>
+        <script src=<?= base_url("public/assets/vendor/datatables.net-responsive/js/dataTables.responsive.min.js") ?>></script>
+        <script src=<?= base_url("public/assets/vendor/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js") ?>></script>
+        <script src=<?= base_url("public/assets/js/pages/demo.datatable-init.js") ?>></script>
+
+    </body>
 </html>

@@ -1,412 +1,100 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <title>Authentication</title>
-  <meta name="description" content="The small framework with powerful features">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" type="image/png" href="/favicon.ico">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-  <style>
-    @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
+    <head>
+        <meta charset="utf-8" />
+        <title>Log In | Hyper - Responsive Bootstrap 5 Admin Dashboard</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 300;
-      font-size: 15px;
-      line-height: 1.7;
-      color: #c4c3ca;
-      background-color: #1f2029;
-      overflow-x: hidden;
-    }
+        <!-- App favicon -->
+        <link rel="shortcut icon" href=<?= base_url("public/assets/images/favicon.ico")?>>
+        
+        <!-- Theme Config Js -->
+        <script src=<?= base_url("public/assets/js/hyper-config.js")?>></script>
 
-    a {
-      cursor: pointer;
-      transition: all 200ms linear;
-    }
+        <!-- App css -->
+        <link href=<?= base_url("public/assets/css/app-saas.min.css")?> rel="stylesheet" type="text/css" id="app-style" />
 
-    a:hover {
-      text-decoration: none;
-    }
+        <!-- Icons css -->
+        <link href=<?= base_url("public/assets/css/icons.min.css")?> rel="stylesheet" type="text/css" />
+    </head>
+    
+    <body class="authentication-bg">
+        <div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xxl-4 col-lg-5">
+                        <div class="card">
 
-    .link {
-      color: #c4c3ca;
-    }
+                            <!-- Logo -->
+                            <div class="card-header py-4 text-center bg-primary">
+                                
+                            </div>
 
-    .link:hover {
-      color: #ffeba7;
-    }
+                            <div class="card-body p-4">
+                                
+                                <div class="text-center w-75 m-auto">
+                                    <h4 class="text-dark-50 text-center pb-0 fw-bold">Sign In</h4>
+                                    <p class="text-muted mb-4">Enter your email address and password to access dashboard.</p>
+                                </div>
 
-    p {
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 1.7;
-    }
+                                <form action="<?= base_url("login_check")?>" method="post">
 
-    h4 {
-      font-weight: 600;
-    }
+                                    <div class="mb-3">
+                                        <label for="emailaddress" class="form-label">Email address</label>
+                                        <input class="form-control" type="email" name="email" id="emailaddress" required="" placeholder="Enter your email">
+                                    </div>
 
-    h6 span {
-      padding: 0 20px;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label">Password</label>
+                                        <div class="input-group input-group-merge">
+                                            <input type="password" id="password"  name="password"  class="form-control" placeholder="Enter your password">
+                                            <div class="input-group-text" data-password="false">
+                                                <span class="password-eye"></span>
+                                            </div>
+                                        </div>
+                                    </div>
 
-    .section {
-      position: relative;
-      width: 100%;
-      display: block;
-    }
+                                    <div class="mb-3 mb-3">
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="checkbox-signin" checked>
+                                            <label class="form-check-label" for="checkbox-signin">Remember me</label>
+                                        </div>
+                                    </div>
 
-    .full-height {
-      min-height: 100vh;
-    }
+                                    <div class="mb-3 mb-0 text-center">
+                                        <button class="btn btn-primary" type="submit"> Log In </button>
+                                    </div>
 
-    [type="checkbox"]:checked,
-    [type="checkbox"]:not(:checked) {
-      position: absolute;
-      left: -9999px;
-    }
+                                </form>
+                            </div> <!-- end card-body -->
+                        </div>
+                        <!-- end card -->
 
-    .checkbox:checked+label,
-    .checkbox:not(:checked)+label {
-      position: relative;
-      display: block;
-      text-align: center;
-      width: 60px;
-      height: 16px;
-      border-radius: 8px;
-      padding: 0;
-      margin: 10px auto;
-      cursor: pointer;
-      background-color: #ffeba7;
-    }
+                        <div class="row mt-3">
+                            <div class="col-12 text-center">
+                                <p class="text-muted">Don't have an account? <a href="<?= base_url("register")?>" class="text-muted ms-1"><b>Sign Up</b></a></p>
+                            </div> <!-- end col -->
+                        </div>
+                        <!-- end row -->
 
-    .checkbox:checked+label:before,
-    .checkbox:not(:checked)+label:before {
-      position: absolute;
-      display: block;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      color: #ffeba7;
-      background-color: #102770;
-      font-family: 'unicons';
-      content: '\eb4f';
-      z-index: 20;
-      top: -10px;
-      left: -10px;
-      line-height: 36px;
-      text-align: center;
-      font-size: 24px;
-      transition: all 0.5s ease;
-    }
-
-    .checkbox:checked+label:before {
-      transform: translateX(44px) rotate(-270deg);
-    }
-
-
-    .card-3d-wrap {
-      position: relative;
-      width: 440px;
-      max-width: 100%;
-      height: 400px;
-      -webkit-transform-style: preserve-3d;
-      transform-style: preserve-3d;
-      perspective: 800px;
-      margin-top: 60px;
-    }
-
-    .card-3d-wrapper {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      -webkit-transform-style: preserve-3d;
-      transform-style: preserve-3d;
-      transition: all 600ms ease-out;
-    }
-
-    .card-front,
-    .card-back {
-      width: 100%;
-      height: 100%;
-      background-color: #2a2b38;
-      background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
-      background-position: bottom center;
-      background-repeat: no-repeat;
-      background-size: 300%;
-      position: absolute;
-      border-radius: 6px;
-      left: 0;
-      top: 0;
-      -webkit-transform-style: preserve-3d;
-      transform-style: preserve-3d;
-      -webkit-backface-visibility: hidden;
-      -moz-backface-visibility: hidden;
-      -o-backface-visibility: hidden;
-      backface-visibility: hidden;
-    }
-
-    .card-back {
-      transform: rotateY(180deg);
-    }
-
-    .checkbox:checked~.card-3d-wrap .card-3d-wrapper {
-      transform: rotateY(180deg);
-    }
-
-    .center-wrap {
-      position: absolute;
-      width: 100%;
-      padding: 0 35px;
-      top: 50%;
-      left: 0;
-      transform: translate3d(0, -50%, 35px) perspective(100px);
-      z-index: 20;
-      display: block;
-    }
-
-
-    .form-group {
-      position: relative;
-      display: block;
-      margin: 0;
-      padding: 0;
-    }
-
-    .form-style {
-      padding: 13px 20px;
-      padding-left: 55px;
-      height: 48px;
-      width: 100%;
-      font-weight: 500;
-      border-radius: 4px;
-      font-size: 14px;
-      line-height: 22px;
-      letter-spacing: 0.5px;
-      outline: none;
-      color: #c4c3ca;
-      background-color: #1f2029;
-      border: none;
-      -webkit-transition: all 200ms linear;
-      transition: all 200ms linear;
-      box-shadow: 0 4px 8px 0 rgba(21, 21, 21, .2);
-    }
-
-    .form-style:focus,
-    .form-style:active {
-      border: none;
-      outline: none;
-      box-shadow: 0 4px 8px 0 rgba(21, 21, 21, .2);
-    }
-
-    .input-icon {
-      position: absolute;
-      top: 0;
-      left: 18px;
-      height: 48px;
-      font-size: 24px;
-      line-height: 48px;
-      text-align: left;
-      color: #ffeba7;
-      -webkit-transition: all 200ms linear;
-      transition: all 200ms linear;
-    }
-
-    .form-group input:-ms-input-placeholder {
-      color: #c4c3ca;
-      opacity: 0.7;
-      -webkit-transition: all 200ms linear;
-      transition: all 200ms linear;
-    }
-
-    .form-group input::-moz-placeholder {
-      color: #c4c3ca;
-      opacity: 0.7;
-      -webkit-transition: all 200ms linear;
-      transition: all 200ms linear;
-    }
-
-    .form-group input:-moz-placeholder {
-      color: #c4c3ca;
-      opacity: 0.7;
-      -webkit-transition: all 200ms linear;
-      transition: all 200ms linear;
-    }
-
-    .form-group input::-webkit-input-placeholder {
-      color: #c4c3ca;
-      opacity: 0.7;
-      -webkit-transition: all 200ms linear;
-      transition: all 200ms linear;
-    }
-
-    .form-group input:focus:-ms-input-placeholder {
-      opacity: 0;
-      -webkit-transition: all 200ms linear;
-      transition: all 200ms linear;
-    }
-
-    .form-group input:focus::-moz-placeholder {
-      opacity: 0;
-      -webkit-transition: all 200ms linear;
-      transition: all 200ms linear;
-    }
-
-    .form-group input:focus:-moz-placeholder {
-      opacity: 0;
-      -webkit-transition: all 200ms linear;
-      transition: all 200ms linear;
-    }
-
-    .form-group input:focus::-webkit-input-placeholder {
-      opacity: 0;
-      -webkit-transition: all 200ms linear;
-      transition: all 200ms linear;
-    }
-
-    .btn {
-      border-radius: 4px;
-      height: 44px;
-      font-size: 13px;
-      font-weight: 600;
-      text-transform: uppercase;
-      -webkit-transition: all 200ms linear;
-      transition: all 200ms linear;
-      padding: 0 30px;
-      letter-spacing: 1px;
-      display: -webkit-inline-flex;
-      display: -ms-inline-flexbox;
-      display: inline-flex;
-      -webkit-align-items: center;
-      -moz-align-items: center;
-      -ms-align-items: center;
-      align-items: center;
-      -webkit-justify-content: center;
-      -moz-justify-content: center;
-      -ms-justify-content: center;
-      justify-content: center;
-      -ms-flex-pack: center;
-      text-align: center;
-      border: none;
-      background-color: #ffeba7;
-      color: #102770;
-      box-shadow: 0 8px 24px 0 rgba(255, 235, 167, .2);
-    }
-
-    .btn:active,
-    .btn:focus {
-      background-color: #102770;
-      color: #ffeba7;
-      box-shadow: 0 8px 24px 0 rgba(16, 39, 112, .2);
-    }
-
-    .btn:hover {
-      background-color: #102770;
-      color: #ffeba7;
-      box-shadow: 0 8px 24px 0 rgba(16, 39, 112, .2);
-    }
-
-
-
-
-    .logo {
-      position: absolute;
-      top: 30px;
-      right: 30px;
-      display: block;
-      z-index: 100;
-      transition: all 250ms linear;
-    }
-
-    .logo img {
-      height: 26px;
-      width: auto;
-      display: block;
-    }
-  </style>
-</head>
-
-<body>
-
-  <a href="https://front.codes/" class="logo" target="_blank">
-    <img src="https://assets.codepen.io/1462889/fcy.png" alt="">
-  </a>
-
-  <div class="section">
-    <div class="container">
-      <div class="row full-height justify-content-center">
-        <div class="col-12 text-center align-self-center py-5">
-          <div class="section pb-5 pt-5 pt-sm-2 text-center">
-            <h6 class="mb-0 pb-3"><span>Log In </span><span>Sign Up</span></h6>
-            <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
-            <label for="reg-log"></label>
-            <div class="card-3d-wrap mx-auto">
-              <div class="card-3d-wrapper">
-                <div class="card-front">
-                  <div class="center-wrap">
-                    <div class="section text-center">
-                      <h4 class="mb-4 pb-3">Log In</h4>
-                      <form action="<?= base_url('login_check')?>" method="POST">
-                      <div class="form-group">
-                        <input type="email" name="email" class="form-style" placeholder="Your Email" id="logemail"
-                          autocomplete="off">
-                        <i class="input-icon uil uil-at"></i>
-                      </div>
-                      <div class="form-group mt-2">
-                        <input type="password" name="password" class="form-style" placeholder="Your Password"
-                          id="logpass" autocomplete="off">
-                        <i class="input-icon uil uil-lock-alt"></i>
-                      </div>
-                      <input type="submit" class="btn mt-4">
-                      </form>
-                    </div>
-                  </div>
+                    </div> <!-- end col -->
                 </div>
-                <div class="card-back">
-                  <div class="center-wrap">
-                    <div class="section text-center">
-                      <h4 class="mb-4 pb-3">Sign Up</h4>
-                      <form action="<?= base_url('register')?>" method="POST">
-
-                      <div class="form-group">
-                        <input type="text" name="name" class="form-style" placeholder="Your Full Name" id="logname"
-                          autocomplete="off">
-                        <i class="input-icon uil uil-user"></i>
-                      </div>
-                      <div class="form-group mt-2">
-                        <input type="email" name="email" class="form-style" placeholder="Your Email" id="logemail"
-                          autocomplete="off">
-                        <i class="input-icon uil uil-at"></i>
-                      </div>
-                      <div class="form-group mt-2">
-                        <input type="password" name="password" class="form-style" placeholder="Your Password"
-                          id="logpass" autocomplete="off">
-                        <i class="input-icon uil uil-lock-alt"></i>
-                      </div>
-                      <input type="submit" class="btn mt-4">
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                <!-- end row -->
             </div>
-          </div>
+            <!-- end container -->
         </div>
-      </div>
-    </div>
-  </div>
-  <!-- Section: Design Block -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
-</body>
+        <!-- end page -->
 
+        
+        <!-- Vendor js -->
+        <script src=<?= base_url("public/assets/js/vendor.min.js")?>></script>
+        
+        <!-- App js -->
+        <script src=<?= base_url("public/assets/js/app.min.js")?>></script>
+
+    </body>
 </html>
