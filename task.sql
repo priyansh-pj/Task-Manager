@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 25, 2023 at 09:59 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Host: localhost:8889
+-- Generation Time: Nov 26, 2023 at 02:40 PM
+-- Server version: 5.7.39
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,9 +30,11 @@ SET time_zone = "+00:00";
 CREATE TABLE `tasks` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `tasks` text NOT NULL,
+  `task` text NOT NULL,
+  `date` date NOT NULL,
+  `priority` varchar(100) NOT NULL,
   `status` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -45,16 +47,9 @@ CREATE TABLE `user_credentials` (
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `is_admin` tinyint(1) NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `user_credentials`
---
-
-INSERT INTO `user_credentials` (`id`, `name`, `email`, `password`, `is_admin`, `status`) VALUES
-(1, 'Priyansh', 'priyansh@gmail.com', '$2y$10$e.AhX5nGbWMk3W0oI6jRDO8jvHqqM2VO9JJ0KcNTHpddc5WAYGSqe', 1, 1);
+  `is_admin` tinyint(1) NOT NULL DEFAULT '0',
+  `status` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -87,7 +82,7 @@ ALTER TABLE `tasks`
 -- AUTO_INCREMENT for table `user_credentials`
 --
 ALTER TABLE `user_credentials`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
